@@ -16,6 +16,10 @@ import { useFaucet } from '@gooddollar/web3sdk-v2'
 import TransactionUpdater from '../state/transactions/updater'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { isMobile } from 'react-device-detect'
+import { WalletChatWidget } from 'react-wallet-chat'
+import { useConnectWallet, useSetChain, useWallets } from '@web3-onboard/react'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { ethers } from 'ethers'
 
 export const Beta = styled.div`
     font-style: normal;
@@ -61,6 +65,11 @@ function App(): JSX.Element {
     const dispatch = useDispatch<AppDispatch>()
     const [preservedSource, setPreservedSource] = useState('')
     const sendData = useSendAnalyticsData()
+    const [{ chains, connectedChain }] = useSetChain()
+    const [{ wallet }] = useConnectWallet()
+    const connectedAccount = wallet?.accounts[0]
+    const activeChain = chains.find((chain) => chain.id === connectedChain?.id)
+    const chainId = activeChain?.token === 'CELO' ? 42_220 : 1
 
     void useFaucet()
 
@@ -137,6 +146,17 @@ function App(): JSX.Element {
                         <Beta className="mt-3 lg:mt-8">{i18n._(t`This project is in beta. Use at your own risk`)}</Beta>
                     </MainBody>
                 </Wrapper>
+                <WalletChatWidget
+                    style={{ marginBottom: isMobile ? '75px' : '0px' }}
+                    connectedWallet={
+                        connectedAccount &&
+                        chainId && {
+                            walletName: wallet.label,
+                            account: connectedAccount.address,
+                            chainId,
+                        }
+                    }
+                />
             </div>
         </Suspense>
     )

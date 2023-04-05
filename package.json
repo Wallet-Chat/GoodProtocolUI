@@ -239,5 +239,8 @@
         "ubeswap-swap-dev": "^1.4.2",
         "web3": "1.8.2"
     },
+    "workspaces": [
+        "packages/react-wallet-chat"
+    ],
     "packageManager": "yarn@3.2.1"
 }

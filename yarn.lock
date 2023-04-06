@@ -4302,7 +4302,7 @@ __metadata:
     react-use-gesture: ^6.0.14
     react-use-promise: ^0.5.0
     react-virtualized-auto-sizer: ^1.0.2
-    react-wallet-chat: ^2.5.4
+    react-wallet-chat: ^2.5.6
     react-window: ^1.8.5
     rebass: ^4.0.7
     redux-localstorage-simple: ^2.3.1
@@ -33056,9 +33056,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-wallet-chat@npm:^2.5.4":
-  version: 2.5.4
-  resolution: "react-wallet-chat@npm:2.5.4"
+"react-wallet-chat@npm:^2.5.6":
+  version: 2.5.6
+  resolution: "react-wallet-chat@npm:2.5.6"
   dependencies:
     classnames: ^2.3.2
   peerDependencies:
@@ -33066,7 +33066,7 @@ __metadata:
     postcss: ^8.4.21
     react: 17.0.2
     tailwindcss: ^3.2.7
-  checksum: 83b44bc61c4f1d405fc581ee798e4b237e9f363e6ae3f6a9d3c6be97736ae6eb46180383f281b493cade83b3536865dc23f9a2d452fde9e7eda445747c6c9744
+  checksum: 09f693284f86cc08f539f4ac9e2ce3f231fdb13e40a6286fe8884a7f024a50fcca2c9f1695eed24d92ac6ed77398e23e241cdf9c28bcaca00b126bebe8bd921d
   languageName: node
   linkType: hard
 

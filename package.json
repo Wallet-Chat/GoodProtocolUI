@@ -225,7 +225,7 @@
         "@web3-onboard/walletconnect": "^2.0.8",
         "@web3-onboard/walletlink": "^2.0.6",
         "amplitude-js": "^8.21.2",
-        "ethers": "^5.7.2",
+        "ethers": "5.7.2",
         "mobile-device-detect": "^0.4.3",
         "native-base": "3.4.11",
         "react-native": "0.70.4",
@@ -234,10 +234,11 @@
         "react-share": "^4.4.0",
         "react-spring-bottom-sheet": "^3.4.1",
         "react-text-mask": "^5.4.3",
-        "react-wallet-chat": "^2.5.6",
+        "react-wallet-chat": "^2.5.8",
         "rxjs": "^7.5.6",
         "text-mask-addons": "^3.8.0",
         "ubeswap-swap-dev": "^1.4.2",
+        "wagmi": "^0.12.10",
         "web3": "1.8.2"
     },
     "packageManager": "yarn@3.2.1"

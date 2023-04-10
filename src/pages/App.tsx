@@ -17,9 +17,7 @@ import TransactionUpdater from '../state/transactions/updater'
 import useSendAnalyticsData from 'hooks/useSendAnalyticsData'
 import { isMobile } from 'react-device-detect'
 import { WalletChatWidget } from 'react-wallet-chat'
-import { useConnectWallet, useSetChain, useWallets } from '@web3-onboard/react'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { ethers } from 'ethers'
+import { useConnectWallet, useSetChain } from '@web3-onboard/react'
 
 export const Beta = styled.div`
     font-style: normal;
@@ -70,7 +68,6 @@ function App(): JSX.Element {
     const connectedAccount = wallet?.accounts[0]
     const activeChain = chains.find((chain) => chain.id === connectedChain?.id)
     const chainId = activeChain?.token === 'CELO' ? 42_220 : 1
-    const ethersProvider = wallet && new ethers.providers.Web3Provider(wallet.provider, 'any')
 
     void useFaucet()
 
@@ -156,11 +153,6 @@ function App(): JSX.Element {
                             account: connectedAccount.address,
                             chainId,
                         }
-                    }
-                    signMessage={
-                        ethersProvider
-                            ? (args) => ethersProvider.getSigner().signMessage(args?.message || '')
-                            : undefined
                     }
                 />
             </div>

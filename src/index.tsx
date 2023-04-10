@@ -24,6 +24,16 @@ import { OnboardProvider } from '@gooddollar/web3sdk-v2'
 import { connectOptions, torus } from 'connectors'
 import { HttpsProvider } from 'utils/HttpsProvider'
 import { registerServiceWorker } from './serviceWorker'
+import { WagmiConfig, createClient, configureChains, mainnet } from 'wagmi'
+import { publicProvider } from 'wagmi/providers/public'
+
+const { provider, webSocketProvider } = configureChains([mainnet], [publicProvider()])
+
+const client = createClient({
+    autoConnect: true,
+    provider,
+    webSocketProvider,
+})
 
 if (window.ethereum) {
     window.ethereum.autoRefreshOnNetworkChange = false
@@ -86,10 +96,12 @@ ReactDOM.render(
                                     <MulticallUpdater />
                                     <ThemeProvider>
                                         <NativeBaseProvider theme={theme}>
-                                            <GlobalStyle />
-                                            <Router>
-                                                <App />
-                                            </Router>
+                                            <WagmiConfig client={client}>
+                                                <GlobalStyle />
+                                                <Router>
+                                                    <App />
+                                                </Router>
+                                            </WagmiConfig>
                                         </NativeBaseProvider>
                                     </ThemeProvider>
                                 </Blocklist>
